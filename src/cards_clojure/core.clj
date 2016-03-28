@@ -22,7 +22,17 @@
      #{c1 c2 c3 c4})))
 
 (defn flush? [hand]
-  (= 1 (count (set map :suit hand))))
+  (= 1 (count (set (map :suit hand)))))
+
+(defn straight-flush? [hand])
+
+(defn straight? [hand])
+
+(defn four-of-a-kind? [hand])
+
+(defn three-of-a-kind? [hand])
+
+(defn two-pair? [hand])
 
 (defn -main []
   (let [deck (create-deck)
