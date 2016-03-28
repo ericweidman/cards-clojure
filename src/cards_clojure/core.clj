@@ -28,7 +28,8 @@
 
 (defn straight? [hand])
 
-(defn four-of-a-kind? [hand])
+(defn four-of-a-kind? [hand]
+ (= 1 (count (set (map :rank hand)))))
 
 (defn three-of-a-kind? [hand])
 
