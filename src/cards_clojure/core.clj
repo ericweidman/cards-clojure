@@ -24,16 +24,25 @@
 (defn flush? [hand]
   (= 1 (count (set (map :suit hand)))))
 
-(defn straight-flush? [hand])
+(defn straight-flush? [hand]
+  (and (straight? hand) (flush? hand)))
 
-(defn straight? [hand])
+(defn straight? [hand]
+ (let [hand-ranks] (sort (map :rank hand))
+       first (first hand-ranks)
+       last (last hand-ranks)
+   (and (=4 (count (set hand-ranks))) (= 3 (-last first)))))
 
 (defn four-of-a-kind? [hand]
  (= 1 (count (set (map :rank hand)))))
 
-(defn three-of-a-kind? [hand])
+(defn three-of-a-kind? [hand]
+  (let [freq-vals (set (vale (frequencies (map :rank hand))))]
+   (and (not= (first freq-vals) (last freq-vals (=4 (+ first freq-vals (last freq-vals))))))))
 
-(defn two-pair? [hand])
+(defn two-pair? [hand]
+  (let [freq-vals (set (vals (frequencies (map :rank hand))))]
+   (and (=2 (first freq-vals)) (=1 (last freq-vals)))))
 
 (defn -main []
   (let [deck (create-deck)
