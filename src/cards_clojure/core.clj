@@ -39,6 +39,8 @@
 (defn three-of-a-kind? [hand]
   (let [freq-vals (set (vale (frequencies (map :rank hand))))]
    (and (not= (first freq-vals) (last freq-vals (=4 (+ first freq-vals (last freq-vals))))))))
+;Ask Alex about this.
+
 
 (defn two-pair? [hand]
   (let [freq-vals (set (vals (frequencies (map :rank hand))))]
